@@ -9,7 +9,9 @@
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" type="text/css">
   <link href="css/acg-freight-0.css" rel="stylesheet" type="text/css">
-  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <script type="text/javascript">
+    !function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
+  </script>
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
 </head>
@@ -17,17 +19,114 @@
   <div class="page-wrapper">
     <section class="sms-section">
       <div class="w-layout-blockcontainer form-container base-container w-container">
-        <h2 class="heading-2">ACG FREIGHT - SMS OPT-IN</h2>
+        <h2 class="heading-2">ACG FREIGHT - SMS OPT-IN</h2>
+
         <div class="form-block w-form">
-          <form action="https://formspree.io/f/xqedanzy" id="email-form" name="email-form" data-name="Email Form" method="POST" class="form" data-wf-page-id="6980f313b9b25dfe4ae748c3" data-wf-element-id="bc46ef70-a0f8-f150-6bb4-e161e6dee18c"><label for="name" class="field-label">Name</label><input class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="" type="text" id="name" required=""><label for="email" class="field-label-2">Email</label><input class="text-field-2 w-input" maxlength="256" name="email" data-name="Email" placeholder="" type="email" id="email" required=""><label for="Phone" class="field-label-3">Phone</label><input class="text-field-3 w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="" type="tel" id="Phone" required=""><label class="w-checkbox"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" required="" class="w-checkbox-input" checked=""><span class="checkbox-label w-form-label" for="checkbox">Yes, I consent to receive SMS notifications from ACG Freight regarding load updates, compliance alerts, and reminders. Message and data rates may apply. Reply STOP to unsubscribe.</span>
-              <p class="paragraph">By opting in, you agree to receive recurring messages from ACG Freight related to your shipments and operations. Consent is not a condition of service. Frequency varies. Reply STOP to unsubscribe, HELP for support</p>
+          <form action="https://formspree.io/f/xqedanzy"
+                id="email-form"
+                name="email-form"
+                data-name="Email Form"
+                method="POST"
+                class="form"
+                data-wf-page-id="6980f313b9b25dfe4ae748c3"
+                data-wf-element-id="bc46ef70-a0f8-f150-6bb4-e161e6dee18c">
+
+            <label for="name" class="field-label">Name</label>
+            <input class="text-field w-input"
+                   maxlength="256"
+                   name="name"
+                   data-name="Name"
+                   type="text"
+                   id="name"
+                   required>
+
+            <label for="email" class="field-label-2">Email</label>
+            <input class="text-field-2 w-input"
+                   maxlength="256"
+                   name="email"
+                   data-name="Email"
+                   type="email"
+                   id="email"
+                   required>
+
+            <label for="Phone" class="field-label-3">Phone</label>
+            <input class="text-field-3 w-input"
+                   maxlength="256"
+                   name="Phone"
+                   data-name="Phone"
+                   type="tel"
+                   id="Phone"
+                   required>
+
+            <p class="paragraph">
+              Providing your phone number does not enroll you in SMS messaging. SMS consent below is optional.
+            </p>
+
+            <!-- IMPORTANT: SMS consent is OPTIONAL and is NOT pre-checked. -->
+            <label class="w-checkbox">
+              <input type="checkbox"
+                     id="sms-consent"
+                     name="sms_consent"
+                     data-name="SMS Consent"
+                     value="Yes - SMS consent provided"
+                     class="w-checkbox-input">
+              <span class="checkbox-label w-form-label" for="sms-consent">
+                Yes, I agree to receive recurring SMS messages from ACG Freight Inc., including load and shipment updates,
+                dispatch and operational messages, compliance alerts, reminders, and marketing or promotional messages.
+                Message frequency varies. Message and data rates may apply. Consent is not a condition of purchase or service.
+                Reply STOP to unsubscribe or HELP for help.
+              </span>
             </label>
+
+            <p class="paragraph">
+              If you do not check the SMS consent box, you may still submit this form and provide your phone number,
+              but ACG Freight Inc. will not treat that phone number as consent to receive SMS messages.
+            </p>
+
+            <label for="sms-signature" class="field-label">
+              SMS Consent Signature / Full Legal Name (required only if you opt in to SMS)
+            </label>
+            <input class="text-field w-input"
+                   maxlength="256"
+                   name="sms_consent_signature"
+                   data-name="SMS Consent Signature"
+                   type="text"
+                   id="sms-signature"
+                   autocomplete="name">
+
+            <label for="sms-consent-date" class="field-label">
+              SMS Consent Date (required only if you opt in to SMS)
+            </label>
+            <input class="text-field w-input"
+                   name="sms_consent_date"
+                   data-name="SMS Consent Date"
+                   type="date"
+                   id="sms-consent-date">
+
+            <!-- Stores the exact consent language/version and timestamp for audit records. -->
+            <input type="hidden"
+                   name="sms_consent_language_version"
+                   value="ACG Freight SMS Opt-In v2026-09-10">
+            <input type="hidden"
+                   name="sms_consent_timestamp"
+                   id="sms-consent-timestamp"
+                   value="">
+            <input type="hidden"
+                   name="sms_opt_in_source"
+                   value="https://acgfreight.com/sms-opt-in">
+
             <div class="div-block">
               <a href="terms-and-conditions.html" class="link">Terms &amp; Conditions</a>
               <p>|</p>
               <a href="privacy-policy.html" class="link-2">Privacy Policy</a>
-            </div><input type="submit" data-wait="Please wait..." class="submit-button w-button" value="SUBMIT">
+            </div>
+
+            <input type="submit"
+                   data-wait="Please wait..."
+                   class="submit-button w-button"
+                   value="SUBMIT">
           </form>
+
           <div class="w-form-done">
             <div>Thank you! Your submission has been received!</div>
           </div>
@@ -38,7 +137,46 @@
       </div>
     </section>
   </div>
-  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=69481d28383c67149b3aa4a4" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=69481d28383c67149b3aa4a4"
+          type="text/javascript"
+          integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+          crossorigin="anonymous"></script>
+
+  <script>
+    (function () {
+      const consent = document.getElementById('sms-consent');
+      const signature = document.getElementById('sms-signature');
+      const consentDate = document.getElementById('sms-consent-date');
+      const timestamp = document.getElementById('sms-consent-timestamp');
+
+      function updateSmsConsentRequirements() {
+        const optedIn = consent.checked;
+
+        // Phone remains required for the general form, but SMS consent stays optional.
+        // Signature/date are only required when the user affirmatively opts in to SMS.
+        signature.required = optedIn;
+        consentDate.required = optedIn;
+
+        if (optedIn) {
+          timestamp.value = new Date().toISOString();
+          if (!consentDate.value) {
+            const today = new Date();
+            const localDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+              .toISOString()
+              .slice(0, 10);
+            consentDate.value = localDate;
+          }
+        } else {
+          timestamp.value = '';
+        }
+      }
+
+      consent.addEventListener('change', updateSmsConsentRequirements);
+      updateSmsConsentRequirements();
+    })();
+  </script>
+
   <script src="js/script.js" type="text/javascript"></script>
 </body>
 </html>
