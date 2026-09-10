@@ -6,295 +6,357 @@
   <meta content="SMS Opt In" property="og:title">
   <meta content="SMS Opt In" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
+
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" type="text/css">
   <link href="css/acg-freight-0.css" rel="stylesheet" type="text/css">
+
   <script type="text/javascript">
     !function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
   </script>
 
+  <!--
+    These styles intentionally use unique acg-sms-* class names so that
+    existing Webflow CSS cannot collapse or distort the consent text.
+  -->
   <style>
-    /* Compact, responsive sizing overrides for the SMS opt-in page */
-    *, *::before, *::after { box-sizing: border-box; }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
 
-    html, body { margin: 0; padding: 0; }
+    html {
+      width: 100% !important;
+      min-height: 100% !important;
+      height: auto !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+    }
+
+    body {
+      width: 100% !important;
+      min-height: 100vh !important;
+      height: auto !important;
+      margin: 0 !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+    }
+
+    /* Prevent existing page CSS from locking the page to one viewport. */
+    .page-wrapper {
+      width: 100% !important;
+      min-height: 100vh !important;
+      height: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+      display: block !important;
+    }
 
     .sms-section {
-      padding: clamp(12px, 2vw, 24px) 12px !important;
+      width: 100% !important;
+      min-height: 100vh !important;
+      height: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+      display: block !important;
+      padding: clamp(16px, 2.5vw, 30px) 12px 50px !important;
     }
 
-    /* Keep the form compact on large monitors, fluid on small screens */
-    .form-container,
-    .w-container.form-container,
-    .base-container.form-container {
-      width: min(94vw, 760px) !important;
-      max-width: 760px !important;
+    .acg-sms-card {
+      width: calc(100% - 24px) !important;
+      max-width: 800px !important;
       min-width: 0 !important;
       margin: 0 auto !important;
-      padding: clamp(18px, 2.5vw, 28px) !important;
-      border-radius: 14px !important;
+      padding: clamp(20px, 3vw, 32px) !important;
+      border-radius: 16px !important;
+      background: rgba(247, 249, 252, 0.97) !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16) !important;
+      overflow: visible !important;
     }
 
-    .heading-2 {
-      margin: 0 0 20px !important;
-      font-size: clamp(25px, 2.4vw, 32px) !important;
-      line-height: 1.1 !important;
+    .acg-sms-title {
+      width: 100% !important;
+      margin: 0 0 28px !important;
+      padding: 0 !important;
       text-align: center !important;
+      font-size: clamp(26px, 3vw, 34px) !important;
+      line-height: 1.15 !important;
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+      white-space: normal !important;
     }
 
-    .form-block,
-    .form {
+    .acg-sms-form {
+      width: 100% !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: block !important;
+      overflow: visible !important;
+    }
+
+    .acg-sms-field-group {
+      width: 100% !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      margin: 0 0 13px !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+
+    .acg-sms-label {
+      width: 100% !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      margin: 0 0 5px !important;
+      padding: 0 !important;
+      display: block !important;
+      float: none !important;
+      position: static !important;
+      font-size: 14px !important;
+      line-height: 1.3 !important;
+      font-weight: 600 !important;
+      white-space: normal !important;
+    }
+
+    .acg-sms-input {
       width: 100% !important;
       max-width: 100% !important;
-      margin: 0 !important;
-    }
-
-    .field-label,
-    .field-label-2,
-    .field-label-3 {
-      display: block !important;
-      margin: 0 0 4px !important;
-      font-size: 14px !important;
-      line-height: 1.25 !important;
-      font-weight: 600 !important;
-    }
-
-    .w-input,
-    .text-field,
-    .text-field-2,
-    .text-field-3 {
-      width: 100% !important;
       min-width: 0 !important;
-      height: 36px !important;
-      min-height: 36px !important;
-      margin: 0 0 11px !important;
-      padding: 6px 9px !important;
+      height: 39px !important;
+      min-height: 39px !important;
+      margin: 0 !important;
+      padding: 7px 10px !important;
+      display: block !important;
+      float: none !important;
+      position: static !important;
+      border: 1px solid #c7cbd1 !important;
+      border-radius: 0 !important;
+      background: #fff !important;
       font-size: 14px !important;
       line-height: 1.2 !important;
     }
 
-    .paragraph {
-      margin: 0 0 10px !important;
-      font-size: 12.5px !important;
-      line-height: 1.4 !important;
-      font-weight: 400 !important;
-    }
-
-    .w-checkbox {
-      display: grid !important;
-      grid-template-columns: 16px minmax(0, 1fr) !important;
-      column-gap: 8px !important;
-      align-items: start !important;
-      margin: 0 0 10px !important;
+    .acg-sms-note {
+      width: 100% !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      margin: 4px 0 13px !important;
       padding: 0 !important;
+      display: block !important;
+      float: none !important;
+      font-size: 13px !important;
+      line-height: 1.45 !important;
+      font-weight: 400 !important;
+      white-space: normal !important;
+      overflow-wrap: break-word !important;
+      word-break: normal !important;
     }
 
-    .w-checkbox-input {
-      width: 14px !important;
-      height: 14px !important;
+    /* Native checkbox + unique label: avoids Webflow's w-checkbox rules entirely. */
+    .acg-sms-consent-row {
+      width: 100% !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      margin: 0 0 12px !important;
+      padding: 0 !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      gap: 10px !important;
+      overflow: visible !important;
+    }
+
+    .acg-sms-checkbox {
+      appearance: auto !important;
+      -webkit-appearance: checkbox !important;
+      width: 16px !important;
+      height: 16px !important;
+      min-width: 16px !important;
+      max-width: 16px !important;
+      flex: 0 0 16px !important;
       margin: 3px 0 0 !important;
+      padding: 0 !important;
+      display: block !important;
+      position: static !important;
+      float: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
     }
 
-    .checkbox-label,
-    .w-form-label.checkbox-label {
+    .acg-sms-consent-text {
+      width: auto !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      flex: 1 1 auto !important;
       margin: 0 !important;
       padding: 0 !important;
-      font-size: 13px !important;
-      line-height: 1.42 !important;
-      font-weight: 500 !important;
+      display: block !important;
+      float: none !important;
+      position: static !important;
+      font-size: 14px !important;
+      line-height: 1.48 !important;
+      font-weight: 600 !important;
+      white-space: normal !important;
+      overflow-wrap: break-word !important;
+      word-break: normal !important;
+      text-align: left !important;
     }
 
-    .consent-meta-grid {
-      display: grid !important;
-      grid-template-columns: minmax(0, 1.35fr) minmax(180px, .65fr) !important;
-      gap: 12px !important;
-      align-items: end !important;
-      margin-top: 2px !important;
-    }
-
-    .consent-meta-grid .w-input {
-      margin-bottom: 0 !important;
-    }
-
-    .div-block {
+    .acg-sms-links {
+      width: 100% !important;
+      margin: 17px 0 15px !important;
+      padding: 0 !important;
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
-      gap: 7px !important;
-      margin: 14px 0 14px !important;
-      font-size: 12.5px !important;
-      line-height: 1.2 !important;
+      gap: 8px !important;
+      flex-wrap: wrap !important;
+      font-size: 13px !important;
+      line-height: 1.3 !important;
     }
 
-    .div-block p { margin: 0 !important; }
+    .acg-sms-links a {
+      display: inline !important;
+      width: auto !important;
+      white-space: normal !important;
+    }
 
-    .submit-button {
+    .acg-sms-submit {
       width: 100% !important;
-      min-height: 40px !important;
-      padding: 9px 16px !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      min-height: 42px !important;
+      height: auto !important;
+      margin: 0 !important;
+      padding: 10px 18px !important;
+      display: block !important;
+      border: 0 !important;
+      border-radius: 5px !important;
+      cursor: pointer !important;
       font-size: 14px !important;
-      line-height: 1.2 !important;
+      line-height: 1.3 !important;
+      font-weight: 600 !important;
     }
 
-    @media (max-width: 700px) {
-      .form-container,
-      .w-container.form-container,
-      .base-container.form-container {
-        width: min(96vw, 620px) !important;
-        padding: 18px !important;
+    @media (max-width: 640px) {
+      .sms-section {
+        padding: 10px 6px 35px !important;
+      }
+
+      .acg-sms-card {
+        width: calc(100% - 8px) !important;
+        max-width: none !important;
+        padding: 18px 14px !important;
         border-radius: 12px !important;
       }
 
-      .heading-2 {
-        font-size: clamp(23px, 6vw, 29px) !important;
-        margin-bottom: 18px !important;
+      .acg-sms-title {
+        margin-bottom: 22px !important;
+        font-size: clamp(23px, 7.5vw, 29px) !important;
       }
 
-      .consent-meta-grid {
-        grid-template-columns: 1fr !important;
-        gap: 0 !important;
+      .acg-sms-input {
+        height: 41px !important;
+        min-height: 41px !important;
+        font-size: 16px !important;
       }
 
-      .consent-meta-grid .w-input {
-        margin-bottom: 11px !important;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .sms-section { padding: 8px 6px !important; }
-
-      .form-container,
-      .w-container.form-container,
-      .base-container.form-container {
-        width: 100% !important;
-        padding: 14px 12px !important;
-        border-radius: 10px !important;
+      .acg-sms-consent-text {
+        font-size: 13.5px !important;
       }
 
-      .heading-2 { font-size: 22px !important; }
-      .checkbox-label, .w-form-label.checkbox-label { font-size: 12.5px !important; }
-      .paragraph { font-size: 12px !important; }
+      .acg-sms-note {
+        font-size: 12.5px !important;
+      }
     }
   </style>
+
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
 </head>
 <body>
   <div class="page-wrapper">
     <section class="sms-section">
-      <div class="w-layout-blockcontainer form-container base-container w-container" style="width:min(94vw,760px)!important;max-width:760px!important;margin-left:auto!important;margin-right:auto!important;">
-        <h2 class="heading-2">ACG FREIGHT - SMS OPT-IN</h2>
+      <div class="acg-sms-card">
+        <h2 class="acg-sms-title">ACG FREIGHT - SMS OPT-IN</h2>
 
-        <div class="form-block w-form">
+        <div class="form-block w-form" style="width:100%!important;max-width:none!important;overflow:visible!important;">
           <form action="https://formspree.io/f/xqedanzy"
                 id="email-form"
                 name="email-form"
                 data-name="Email Form"
                 method="POST"
-                class="form"
+                class="acg-sms-form"
                 data-wf-page-id="6980f313b9b25dfe4ae748c3"
                 data-wf-element-id="bc46ef70-a0f8-f150-6bb4-e161e6dee18c">
 
-            <label for="name" class="field-label">Name</label>
-            <input class="text-field w-input"
-                   maxlength="256"
-                   name="name"
-                   data-name="Name"
-                   type="text"
-                   id="name"
-                   required>
+            <div class="acg-sms-field-group">
+              <label for="name" class="acg-sms-label">Name</label>
+              <input class="acg-sms-input" maxlength="256" name="name" data-name="Name" type="text" id="name" required>
+            </div>
 
-            <label for="email" class="field-label-2">Email</label>
-            <input class="text-field-2 w-input"
-                   maxlength="256"
-                   name="email"
-                   data-name="Email"
-                   type="email"
-                   id="email"
-                   required>
+            <div class="acg-sms-field-group">
+              <label for="email" class="acg-sms-label">Email</label>
+              <input class="acg-sms-input" maxlength="256" name="email" data-name="Email" type="email" id="email" required>
+            </div>
 
-            <label for="Phone" class="field-label-3">Phone</label>
-            <input class="text-field-3 w-input"
-                   maxlength="256"
-                   name="Phone"
-                   data-name="Phone"
-                   type="tel"
-                   id="Phone"
-                   required>
+            <div class="acg-sms-field-group">
+              <label for="Phone" class="acg-sms-label">Phone</label>
+              <input class="acg-sms-input" maxlength="256" name="Phone" data-name="Phone" type="tel" id="Phone" required>
+            </div>
 
-            <p class="paragraph">
+            <p class="acg-sms-note">
               Providing your phone number does not enroll you in SMS messaging. SMS consent below is optional.
             </p>
 
-            <!-- IMPORTANT: SMS consent is OPTIONAL and is NOT pre-checked. -->
-            <label class="w-checkbox">
+            <div class="acg-sms-consent-row">
               <input type="checkbox"
                      id="sms-consent"
                      name="sms_consent"
                      data-name="SMS Consent"
                      value="Yes - SMS consent provided"
-                     class="w-checkbox-input">
-              <span class="checkbox-label w-form-label" for="sms-consent">
+                     class="acg-sms-checkbox">
+              <label for="sms-consent" class="acg-sms-consent-text">
                 Yes, I agree to receive recurring SMS messages from ACG Freight Inc., including load and shipment updates,
                 dispatch and operational messages, compliance alerts, reminders, and marketing or promotional messages.
                 Message frequency varies. Message and data rates may apply. Consent is not a condition of purchase or service.
                 Reply STOP to unsubscribe or HELP for help.
-              </span>
-            </label>
+              </label>
+            </div>
 
-            <p class="paragraph">
+            <p class="acg-sms-note">
               If you do not check the SMS consent box, you may still submit this form and provide your phone number,
               but ACG Freight Inc. will not treat that phone number as consent to receive SMS messages.
             </p>
 
-            <div class="consent-meta-grid">
-              <div>
-                <label for="sms-signature" class="field-label">
-                  SMS Consent Signature / Full Legal Name (required only if you opt in to SMS)
-                </label>
-                <input class="text-field w-input"
-                       maxlength="256"
-                       name="sms_consent_signature"
-                       data-name="SMS Consent Signature"
-                       type="text"
-                       id="sms-signature"
-                       autocomplete="name">
-              </div>
-
-              <div>
-                <label for="sms-consent-date" class="field-label">
-                  SMS Consent Date (required only if you opt in to SMS)
-                </label>
-                <input class="text-field w-input"
-                       name="sms_consent_date"
-                       data-name="SMS Consent Date"
-                       type="date"
-                       id="sms-consent-date">
-              </div>
+            <div class="acg-sms-field-group">
+              <label for="sms-signature" class="acg-sms-label">
+                SMS Consent Signature / Full Legal Name <span style="font-weight:400;">(required only if you opt in to SMS)</span>
+              </label>
+              <input class="acg-sms-input"
+                     maxlength="256"
+                     name="sms_consent_signature"
+                     data-name="SMS Consent Signature"
+                     type="text"
+                     id="sms-signature"
+                     autocomplete="name">
             </div>
 
-            <!-- Stores the exact consent language/version and timestamp for audit records. -->
-            <input type="hidden"
-                   name="sms_consent_language_version"
-                   value="ACG Freight SMS Opt-In v2026-09-10">
-            <input type="hidden"
-                   name="sms_consent_timestamp"
-                   id="sms-consent-timestamp"
-                   value="">
-            <input type="hidden"
-                   name="sms_opt_in_source"
-                   value="https://acgfreight.com/sms-opt-in">
+            <!-- Audit fields are recorded automatically; no extra visible date field is needed. -->
+            <input type="hidden" name="sms_consent_language_version" value="ACG Freight SMS Opt-In v2026-09-10">
+            <input type="hidden" name="sms_consent_timestamp" id="sms-consent-timestamp" value="">
+            <input type="hidden" name="sms_opt_in_source" value="https://acgfreight.com/sms-opt-in">
 
-            <div class="div-block">
-              <a href="terms-and-conditions.html" class="link">Terms &amp; Conditions</a>
-              <p>|</p>
-              <a href="privacy-policy.html" class="link-2">Privacy Policy</a>
+            <div class="acg-sms-links">
+              <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+              <span>|</span>
+              <a href="privacy-policy.html">Privacy Policy</a>
             </div>
 
-            <input type="submit"
-                   data-wait="Please wait..."
-                   class="submit-button w-button"
-                   value="SUBMIT">
+            <input type="submit" data-wait="Please wait..." class="acg-sms-submit w-button" value="SUBMIT">
           </form>
 
           <div class="w-form-done">
@@ -317,29 +379,12 @@
     (function () {
       const consent = document.getElementById('sms-consent');
       const signature = document.getElementById('sms-signature');
-      const consentDate = document.getElementById('sms-consent-date');
       const timestamp = document.getElementById('sms-consent-timestamp');
 
       function updateSmsConsentRequirements() {
         const optedIn = consent.checked;
-
-        // Phone remains required for the general form, but SMS consent stays optional.
-        // Signature/date are only required when the user affirmatively opts in to SMS.
         signature.required = optedIn;
-        consentDate.required = optedIn;
-
-        if (optedIn) {
-          timestamp.value = new Date().toISOString();
-          if (!consentDate.value) {
-            const today = new Date();
-            const localDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
-              .toISOString()
-              .slice(0, 10);
-            consentDate.value = localDate;
-          }
-        } else {
-          timestamp.value = '';
-        }
+        timestamp.value = optedIn ? new Date().toISOString() : '';
       }
 
       consent.addEventListener('change', updateSmsConsentRequirements);
@@ -350,3 +395,4 @@
   <script src="js/script.js" type="text/javascript"></script>
 </body>
 </html>
+
