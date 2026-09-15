@@ -318,48 +318,41 @@
                      name="sms_consent"
                      data-name="SMS Consent"
                      value="Yes - SMS consent provided"
-                     class="acg-sms-checkbox">
+                     class="acg-sms-checkbox"
+                     aria-describedby="sms-consent-note">
               <label for="sms-consent" class="acg-sms-consent-text">
-                Yes, I agree to receive recurring SMS messages from ACG Freight Inc., including load and shipment updates,
-                dispatch and operational messages, compliance alerts, reminders, and marketing or promotional messages.
-                By checking this box, I am expressly opting in to receive both operational and marketing text messages
-                from ACG Freight Inc. Message frequency may vary. Message and data rates may apply. Consent is not a
-                condition of purchase or service. Reply STOP to opt out or HELP for help. ACG Freight Inc. will not sell,
-                rent, or share your mobile number or SMS consent with third parties or affiliates for their own marketing
-                or promotional purposes.
+                Yes, I agree to receive recurring SMS text messages from ACG Freight Inc. at the mobile number provided,
+                including load and shipment updates, dispatch and operational messages, compliance alerts, reminders,
+                and marketing or promotional messages. By checking this box, I am expressly opting in to marketing texts
+                from ACG Freight Inc., including messages that may be sent using an automated system. Message frequency may vary.
+                Standard message and data rates may apply. Consent is not a condition of purchase or service. Carriers are not
+                liable for delayed or undelivered messages. Reply STOP to opt out or HELP for help. Your mobile information and
+                SMS opt-in consent will not be sold or shared with third parties or affiliates for promotional or marketing purposes.
               </label>
             </div>
 
-            <p class="acg-sms-note">
+            <p class="acg-sms-note" id="sms-consent-note">
               If you do not check the SMS consent box, you may still submit this form and provide your phone number.
               ACG Freight Inc. will not treat your phone number as consent to receive SMS messages unless you voluntarily
               check the SMS consent box above.
             </p>
 
             <p class="acg-sms-note">
-              After a successful SMS opt-in, ACG Freight Inc. may send the following confirmation message:
-              “ACG Freight Inc.: You are subscribed to recurring SMS messages, including load/shipment updates, dispatch
-              and operational messages, compliance alerts, reminders, and marketing/promotional messages. Message frequency
-              varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help.”
+              If you opt in, the confirmation message will state that you are subscribed to ACG Freight Inc. SMS messages,
+              that message frequency may vary, that message and data rates may apply, and that you can reply STOP to opt out
+              or HELP for help.
             </p>
 
-            <div class="acg-sms-field-group">
-              <label for="sms-signature" class="acg-sms-label">
-                SMS Consent Signature / Full Legal Name <span style="font-weight:400;">(required only if you opt in to SMS)</span>
-              </label>
-              <input class="acg-sms-input"
-                     maxlength="256"
-                     name="sms_consent_signature"
-                     data-name="SMS Consent Signature"
-                     type="text"
-                     id="sms-signature"
-                     autocomplete="name">
-            </div>
-
-            <!-- Audit fields are recorded automatically; no extra visible date field is needed. -->
-            <input type="hidden" name="sms_consent_language_version" value="ACG Freight SMS Opt-In v2026-09-15">
+            <!-- Digital web-form opt-in audit fields. -->
+            <input type="hidden" name="sms_consent_language_version" value="ACG Freight SMS Opt-In v2026-09-15-web-only">
             <input type="hidden" name="sms_consent_timestamp" id="sms-consent-timestamp" value="">
+            <input type="hidden" name="sms_consent_status" id="sms-consent-status" value="Not opted in">
+            <input type="hidden" name="sms_opt_in_method" value="Digital web form">
             <input type="hidden" name="sms_opt_in_source" value="https://acgfreight.com/sms-opt-in">
+
+            <p class="acg-sms-note" style="text-align:center; margin-top:16px;">
+              Please review our Privacy Policy and Terms &amp; Conditions below before submitting.
+            </p>
 
             <div class="acg-sms-links">
               <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
@@ -389,17 +382,17 @@
   <script>
     (function () {
       const consent = document.getElementById('sms-consent');
-      const signature = document.getElementById('sms-signature');
       const timestamp = document.getElementById('sms-consent-timestamp');
+      const status = document.getElementById('sms-consent-status');
 
-      function updateSmsConsentRequirements() {
+      function updateSmsConsentRecord() {
         const optedIn = consent.checked;
-        signature.required = optedIn;
         timestamp.value = optedIn ? new Date().toISOString() : '';
+        status.value = optedIn ? 'Opted in' : 'Not opted in';
       }
 
-      consent.addEventListener('change', updateSmsConsentRequirements);
-      updateSmsConsentRequirements();
+      consent.addEventListener('change', updateSmsConsentRecord);
+      updateSmsConsentRecord();
     })();
   </script>
 
