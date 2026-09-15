@@ -322,14 +322,25 @@
               <label for="sms-consent" class="acg-sms-consent-text">
                 Yes, I agree to receive recurring SMS messages from ACG Freight Inc., including load and shipment updates,
                 dispatch and operational messages, compliance alerts, reminders, and marketing or promotional messages.
-                Message frequency varies. Message and data rates may apply. Consent is not a condition of purchase or service.
-                Reply STOP to unsubscribe or HELP for help.
+                By checking this box, I am expressly opting in to receive both operational and marketing text messages
+                from ACG Freight Inc. Message frequency may vary. Message and data rates may apply. Consent is not a
+                condition of purchase or service. Reply STOP to opt out or HELP for help. ACG Freight Inc. will not sell,
+                rent, or share your mobile number or SMS consent with third parties or affiliates for their own marketing
+                or promotional purposes.
               </label>
             </div>
 
             <p class="acg-sms-note">
-              If you do not check the SMS consent box, you may still submit this form and provide your phone number,
-              but ACG Freight Inc. will not treat that phone number as consent to receive SMS messages.
+              If you do not check the SMS consent box, you may still submit this form and provide your phone number.
+              ACG Freight Inc. will not treat your phone number as consent to receive SMS messages unless you voluntarily
+              check the SMS consent box above.
+            </p>
+
+            <p class="acg-sms-note">
+              After a successful SMS opt-in, ACG Freight Inc. may send the following confirmation message:
+              “ACG Freight Inc.: You are subscribed to recurring SMS messages, including load/shipment updates, dispatch
+              and operational messages, compliance alerts, reminders, and marketing/promotional messages. Message frequency
+              varies. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help.”
             </p>
 
             <div class="acg-sms-field-group">
@@ -346,7 +357,7 @@
             </div>
 
             <!-- Audit fields are recorded automatically; no extra visible date field is needed. -->
-            <input type="hidden" name="sms_consent_language_version" value="ACG Freight SMS Opt-In v2026-09-10">
+            <input type="hidden" name="sms_consent_language_version" value="ACG Freight SMS Opt-In v2026-09-15">
             <input type="hidden" name="sms_consent_timestamp" id="sms-consent-timestamp" value="">
             <input type="hidden" name="sms_opt_in_source" value="https://acgfreight.com/sms-opt-in">
 
@@ -395,4 +406,3 @@
   <script src="js/script.js" type="text/javascript"></script>
 </body>
 </html>
-
